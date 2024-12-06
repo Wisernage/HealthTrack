@@ -1,0 +1,153 @@
+The project uses Docker for the backend only. We recreated the backend completely (without using servlets at all). The general implementation is based on React and Bootstrap components.
+
+How I worked on this project step by step
+
+For this project, some knowledge of html, css, js & react is needed. If you don't know about npm, git, webpack, eslint & prettier you should at least check what they are and how they work before continuing. I didn't use npx create-react-app to minimize dependencies.
+Step 1, Creating a basic app
+
+Commands I used for this step:
+
+    npm i
+    npm i -D webpack webpack-cli webpack-dev-server webpack-dev-server html-webpack-plugin babel-loader @babel/core @babel/preset-env @babel/preset-env @babel/preset-react style-loader css-loader
+
+package.json was created by the npm i command. package-lock.json was generated automatically and shouldn't be touched. For more info about it, read this.
+
+Webpack
+
+    basic dependencies needed for server to work:
+        webpack
+        webpack-cli
+        webpack-dev-server
+    plugin needed for html files:
+        html-webpack-plugin
+    loader dependencies needed for js & rxjs:
+        babel-loader
+        @babel/core
+        @babel/preset-env (added to options-presets)
+        @babel/preset-react (added to options-presets)
+    loaders needed for css:
+        style-loader
+        css-loader
+    entry point:
+        I did set the entry point in the webpack configuration file
+    mode:
+        I did set mode to "development" temporary in the webpack configuration file
+
+Prepared the react app in "src" folder:
+
+    index.html, has the html head & a body with an element, which should have id "app" to be able to be targeted later
+    index.js, creates the app component and put it into the element with id "app" (don't forget to import the css to test it)
+    app.js, contains the main app
+    index.css, contains the css which is going to apply to the whole app
+
+The project at the of this step has the essentials to run with the command webpack serve --open.
+Step 2, Keeping some good practices
+
+Commands I used for this step:
+
+    git init
+    npm i -D eslint eslint-plugin-jsx-a11y eslint-plugin-import eslint-plugin-hooks eslint-webpack-plugin path browserlist
+    ./node_modules/.bin/eslint --init
+
+Git installation:
+
+    git initiliazed
+    .gitignore file created (always ignore at least node_modules/ & dist/ )
+    committing in regular basis
+    using descriptive messages & tags to keep things clear
+
+Specified the version of npm to keep consistency:
+
+    .nvmrc file created
+    I set engines in package.json
+
+installing eslint and its plugins to reduce errors while coding:
+
+    eslint I have run./node_modules/.bin/eslint --init to create eslint config file
+    eslint-plugin-react this one should be installed from the last command
+    eslint-plugin-jsx-a11y to help with accessibilities issues such as a missing property alt from an img element
+    eslint-plugin-import to track misspelt imports and other errors about importing
+    eslint-plugin-hooks helps to deal with hooks
+    also, node env was set to true as well, otherwise webpack.config file would have errors
+    last but not least detected react version
+
+further changes in webpack.config file:
+
+    have added a plugin to resolve some javascript eslint issues eslint-webpack-plugin
+    for paths to have better scalability imported and used paths package
+    have set ouput & devServer to not let it to the default ones
+    have set devtool to inline-source-map to help with debugging javascript in browser for development mode
+    have set mode based on an environment variable to be able to easily switch between modes (default is good to be "development")
+
+prettier:
+
+    There are several ways to deal with prettier. .prettierrc.json should contain an empty object or the extra rules for formatting we want to change for the specific project. I have configured my VScode to format on save when this file exists. The extension I use is Prettier - Code formatter
+
+In package.json is good to have:
+
+    description a description is always good to have
+    scripts for webpack development & production mode. Later on, a script for tests should be added but for now we left it as is
+    author always good to mention the author or the contributors
+    email an e-mail for people to be able to report to you issues
+    repository to easily access the online repo
+    browserslist to show which browsers versions are supported. (this one is an npm package)
+
+/// DEPENDENCIES:
+
+"dependencies": {
+        "cors": "^2.8.5",
+        "dotenv": "^14.2.0",
+        "express": "^4.17.2",
+        "jsonwebtoken": "^8.5.1",
+        "mysql2": "^2.3.3"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.15"
+    }
+"devDependencies": {
+    "@babel/core": "^7.16.12",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "autoprefixer": "^10.4.2",
+    "babel-loader": "^8.2.3",
+    "browserlist": "^1.0.1",
+    "css-loader": "^6.5.1",
+    "eslint": "^8.7.0",
+    "eslint-plugin-hooks": "^0.4.1",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "eslint-webpack-plugin": "^3.1.1",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.5.3",
+    "path": "^0.12.7",
+    "postcss-loader": "^6.2.1",
+    "sass": "^1.49.0",
+    "sass-loader": "^12.4.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.67.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.3"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/react-fontawesome": "^0.1.17",
+    "bootstrap": "^5.1.3",
+    "lodash": "^4.17.21",
+    "mdb-react-ui-kit": "^2.3.0",
+    "ol": "^6.12.0",
+    "prop-types": "^15.8.1",
+    "query-string": "^7.1.0",
+    "react": "^17.0.2",
+    "react-bootstrap": "^2.1.1",
+    "react-bootstrap-time-picker": "^2.0.1",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^6.2.1",
+    "rxjs": "^7.5.2"
+  },
+
+
+
+
+

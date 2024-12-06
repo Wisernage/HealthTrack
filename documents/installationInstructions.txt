@@ -1,0 +1,2 @@
+for frontend: in package.json you can see the build commands. We will use npm run start. Before that, nodemodules must be installed with npm -i.
+for backend: you need docker, build and then docker compose up.

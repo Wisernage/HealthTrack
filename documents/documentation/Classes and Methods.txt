@@ -1,0 +1,1 @@
+Way too many to list, generally used (both in the frontend and backend) routing for everything, paths, fetching of functions, and different folders/files for each component.
