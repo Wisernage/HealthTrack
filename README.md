@@ -1,4 +1,4 @@
-### Part 1: Overview, Features, and Technologies Used
+   ### Part 1: Overview, Features, and Technologies Used
 
 # Healthcare Management System
 
@@ -350,5 +350,3 @@ For any questions, issues, or contributions, please reach out:
   - Passwords should be hashed before storage (e.g., using bcrypt).
   - Implement proper validation and sanitization to prevent SQL injection and other vulnerabilities.
   - Use HTTPS in production environments to secure data transmission.
-
-Developed with ❤️ by Dimitris
